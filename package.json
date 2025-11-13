@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-  "dev": "vite",
-  "build": "npm run prisma:generate && vite build",
-  "preview": "vite preview",
-  "prisma:generate": "prisma generate --schema=backend/prisma/schema.prisma"
-},
-
+    "dev": "vite",
+    "build": "npm run prisma:generate && vite build",
+    "preview": "vite preview",
+    "prisma:generate": "prisma generate --schema=backend/prisma/schema.prisma"
+  },
   "dependencies": {
     "@prisma/client": "^6.19.0",
     "audit": "^0.0.6",
