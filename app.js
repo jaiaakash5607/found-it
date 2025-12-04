@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const {readFileSync} = require('fs');
+const path = require('path');  
 
 const pagesDir = path.join(__dirname, 'pages');
 
