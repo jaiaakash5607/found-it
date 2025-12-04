@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-     "start": "node server.js",
-    "dev": "nodemon app.js",
     "vercel-dev": "vercel dev"
   },
   "keywords": [],
