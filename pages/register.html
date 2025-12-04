@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account — SRMIST Lost & Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #818cf8;
+      --primary-dark: #6366f1;
+      --bg: #0f0f14;
+      --bg-card: #181820;
+      --bg-input: #111118;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --border: #2a2a35;
+      --error: #ef4444;
+      --radius: 14px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 50%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 50px 16px;
+      color: var(--text-main);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--bg-card);
+      padding: 38px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .card-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 12px;
+      font-size: 1rem;
+      color: var(--text-main);
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.45);
+    }
+
+    .input::placeholder {
+      color: #6b7280;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.2s ease;
+      box-shadow: 0 0 22px rgba(129, 140, 248, 0.5);
+    }
+
+    .btn-submit:hover {
+      background: var(--primary);
+      box-shadow: 0 0 26px rgba(129, 140, 248, 0.8);
+      transform: translateY(-2px);
+    }
+
+    .error-text {
+      color: var(--error);
+      font-size: 0.8rem;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
+    .success {
+      text-align: center;
+      color: #22c55e;
+      font-size: 0.9rem;
+      min-height: 18px;
+      margin-top: 8px;
+    }
+
+    .helper-text {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .helper-text a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .helper-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">Create Account</h1>
+      <p class="card-subtitle">Join SRMIST Lost &amp; Found</p>
+    </div>
+
+    <form id="signupForm">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input class="input" id="fullName" type="text" placeholder="John Doe">
+        <div class="error-text" id="nameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>SRMIST Email</label>
+        <input class="input" id="email" type="email" placeholder="your.name@srmist.edu.in">
+        <div class="error-text" id="emailError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number (Optional)</label>
+        <input class="input" id="phone" type="text" placeholder="+91 1234567890">
+        <div class="error-text" id="phoneError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input class="input" id="password" type="password" placeholder="••••••••">
+        <div class="error-text" id="passwordError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input class="input" id="confirmPassword" type="password" placeholder="••••••••">
+        <div class="error-text" id="confirmPasswordError"></div>
+      </div>
+
+      <button class="btn-submit" type="submit">Create Account</button>
+
+      <div class="success" id="successMessage"></div>
+
+      <p class="helper-text">
+        Already have an account? <a href="login-dark.html">Log In</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- <script>
+    const form = document.getElementById("signupForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      successMessage.textContent = "Account created successfully! (Demo only)";
+    });
+  </script> -->
+
+</body>
+</html>
