@@ -25,9 +25,9 @@ app.get('/browse',(req,res)=>{
     res.status(200).send(browserPage)
 })
 
-app.all('*',(req,res)=>{
-    res.status(404).send(errorPage)
-})
+// app.all('*',(req,res)=>{
+//     res.status(404).send(errorPage)
+// })
 
 
 
