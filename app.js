@@ -27,6 +27,7 @@ app.get('/browse',(req,res)=>{
 
 // app.all('*',(req,res)=>{
 //     res.status(404).send(errorPage)
+//     res.status(404).send(errorPage)
 // })
 
 
