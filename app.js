@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const {readFileSync} = require('fs');
 
+const pagesDir = path.join(__dirname, 'pages');
+
 const homePage = readFileSync('./pages/index.html', 'utf-8');
 const loginPage = readFileSync('./pages/login.html', 'utf-8');
 const registerPage = readFileSync('./pages/register.html', 'utf-8');
