@@ -8,6 +8,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* NAVBAR (same as homepage) */
+    .navbar {
+      width: 100%;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 23, 42, 0.96);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    /* Left Side (Back + Title) */
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #818cf8;
+    }
+
+    /* Back Button */
+    .back-btn {
+      background: transparent;
+      border: 1px solid rgba(129, 140, 248, 0.55);
+      color: #cbd5e1;
+      padding: 6px 12px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(129, 140, 248, 0.15);
+      border-color: #818cf8;
+      color: white;
+    }
+
     :root {
       --primary: #818cf8;
       --primary-dark: #6366f1;
@@ -24,14 +67,16 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ⬇️ MAIN FIX: make body a column so navbar is on top, card below */
     body {
       font-family: "Inter", sans-serif;
       background: radial-gradient(circle at top, #1f2937 0, #020617 50%);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 50px 16px;
       color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px 40px; /* bottom padding only */
     }
 
     .card {
@@ -42,6 +87,7 @@
       border-radius: 20px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      margin-top: 80px; /* ⬅️ space under navbar */
     }
 
     .card-header {
@@ -149,6 +195,13 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <button class="back-btn" onclick="history.back()">←</button>
+      <a href="/" style="all: unset;"> SRMIST Lost & Found</a>
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-header">
@@ -192,135 +245,9 @@
       <div class="success" id="successMessage"></div>
 
       <p class="helper-text">
-        Already have an account? <a href="login-dark.html">Log In</a>
+        Already have an account? <a href="/login">Log In</a>
       </p>
     </form>
   </div>
-
-  <script>
-  const signupForm = document.getElementById('signupForm');
-
-  const fullNameInput = document.getElementById('fullName');
-  const emailInput = document.getElementById('email');
-  const phoneInput = document.getElementById('phone');
-  const passwordInput = document.getElementById('password');
-  const confirmPasswordInput = document.getElementById('confirmPassword');
-
-  const nameError = document.getElementById('nameError');
-  const emailError = document.getElementById('emailError');
-  const phoneError = document.getElementById('phoneError');
-  const passwordError = document.getElementById('passwordError');
-  const confirmPasswordError = document.getElementById('confirmPasswordError');
-
-  const successMessage = document.getElementById('successMessage');
-
-  function clearErrors() {
-    nameError.textContent = '';
-    emailError.textContent = '';
-    phoneError.textContent = '';
-    passwordError.textContent = '';
-    confirmPasswordError.textContent = '';
-    successMessage.textContent = '';
-  }
-
-  function validateForm() {
-    clearErrors();
-    let isValid = true;
-
-    const fullName = fullNameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-
-    if (!fullName) {
-      nameError.textContent = 'Full name is required.';
-      isValid = false;
-    }
-
-    if (!email) {
-      emailError.textContent = 'Email is required.';
-      isValid = false;
-    } else if (!email.toLowerCase().endsWith('@srmist.edu.in')) {
-      emailError.textContent = 'Only @srmist.edu.in emails are allowed.';
-      isValid = false;
-    }
-
-    // phone is optional, but if filled, do a light validation
-    if (phone && !/^\+?[0-9\s-]{7,15}$/.test(phone)) {
-      phoneError.textContent = 'Please enter a valid phone number.';
-      isValid = false;
-    }
-
-    if (!password) {
-      passwordError.textContent = 'Password is required.';
-      isValid = false;
-    } else if (password.length < 8) {
-      passwordError.textContent = 'Password must be at least 8 characters.';
-      isValid = false;
-    }
-
-    if (!confirmPassword) {
-      confirmPasswordError.textContent = 'Please confirm your password.';
-      isValid = false;
-    } else if (password !== confirmPassword) {
-      confirmPasswordError.textContent = 'Passwords do not match.';
-      isValid = false;
-    }
-
-    return isValid;
-  }
-
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    const payload = {
-      fullName: fullNameInput.value.trim(),
-      email: emailInput.value.trim(),
-      phone: phoneInput.value.trim() || null,
-      password: passwordInput.value
-    };
-
-    try {
-      const res = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        // Show server-side validation errors
-        if (data.error) {
-          // simple handling: show under email if it’s about duplicate, otherwise generic
-          if (data.error.toLowerCase().includes('email')) {
-            emailError.textContent = data.error;
-          } else {
-            successMessage.textContent = '';
-            alert(data.error);
-          }
-        }
-        return;
-      }
-
-      // Success
-      successMessage.textContent = 'Account created successfully! You can now log in.';
-      signupForm.reset();
-    } catch (err) {
-      console.error(err);
-      successMessage.textContent = '';
-      alert('Something went wrong. Please try again later.');
-    }
-  });
-</script>
-
-
 </body>
 </html>

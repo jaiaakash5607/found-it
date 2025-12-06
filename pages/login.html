@@ -8,6 +8,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+
+/* NAVBAR (same as homepage) */
+.navbar {
+  width: 100%;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Left Side (Back + Title) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #818cf8;
+}
+
+/* Back Button */
+.back-btn {
+  background: transparent;
+  border: 1px solid rgba(129, 140, 248, 0.55);
+  color: #cbd5e1;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(129, 140, 248, 0.15);
+  border-color: #818cf8;
+  color: white;
+}
+
+
     :root {
       --primary: #818cf8;
       --primary-dark: #6366f1;
@@ -25,24 +70,31 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 50%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 50px 16px;
-      color: var(--text-main);
-    }
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 50%);
+  min-height: 100vh;
+  color: var(--text-main);
+
+  /* KEY PART: stack navbar on top, card below */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 16px 40px; /* no big top padding now */
+}
+
 
     .card {
-      background: var(--bg-card);
-      width: 100%;
-      max-width: 460px;
-      padding: 34px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 460px;
+  padding: 34px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-top: 80px; /* ⬅ space under navbar */
+}
+
 
     .card-header {
       text-align: center;
@@ -154,6 +206,15 @@
 
 <body>
 
+  <!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-left">
+    <button class="back-btn" onclick="history.back()">←</button>
+   <a href="/" style="all:unset"> SRMIST Lost & Found</a>
+  </div>
+</div>
+
+  
   <div class="card">
     <div class="card-header">
       <h1 class="card-title">Log In</h1>
@@ -186,7 +247,7 @@
       <div class="success" id="successMsg"></div>
 
       <p class="helper-text">
-        Don’t have an account? <a href="signup-dark.html">Create one</a>
+        Don’t have an account? <a href="/register">Create one</a>
       </p>
     </form>
   </div>
