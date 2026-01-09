@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>404 — Page Not Found</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
+ :root {
       --primary: #818cf8;
       --primary-dark: #6366f1;
       --bg: #020617;
@@ -26,7 +15,10 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    .e1{
+      display: flex;
+      justify-content: center;
+    }
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       min-height: 100vh;
@@ -41,7 +33,7 @@
       padding: 24px;
     }
 
-    .container {
+    .e {
       max-width: 560px;
       width: 100%;
       background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.16), transparent 60%) ,
@@ -157,34 +149,3 @@
         font-size: 1.4rem;
       }
     }
-  </style>
-</head>
-<body>
-
-  <main class="container">
-    <div class="badge">
-      <span class="badge-dot"></span>
-      <span>Oops! Lost in the campus</span>
-    </div>
-
-    <div class="code">404</div>
-    <h1 class="title">Page Not Found</h1>
-
-    <p class="message">
-      The page you are looking for doesn’t exist, was moved, or never enrolled this semester.<br>
-      Let’s get you back to a familiar hallway.
-    </p>
-
-    <div class="actions">
-      <!-- Replace href with your real home/dashboard routes -->
-      <a href="/" class="btn btn-primary">Back to Home</a>
-      <a href="/browse" class="btn btn-ghost">Browse Items</a>
-    </div>
-
-    <p class="hint">
-      Error code: <strong>SRM-404</strong> • If this keeps happening, contact support.
-    </p>
-  </main>
-
-</body>
-</html>

@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Create Account — SRMIST Lost & Found</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* NAVBAR (same as homepage) */
-    .navbar {
+  /* .navbar {
       width: 100%;
       padding: 18px 7%;
       display: flex;
@@ -23,7 +12,6 @@
       z-index: 20;
     }
 
-    /* Left Side (Back + Title) */
     .nav-left {
       display: flex;
       align-items: center;
@@ -33,7 +21,6 @@
       color: #818cf8;
     }
 
-    /* Back Button */
     .back-btn {
       background: transparent;
       border: 1px solid rgba(129, 140, 248, 0.55);
@@ -49,7 +36,7 @@
       background: rgba(129, 140, 248, 0.15);
       border-color: #818cf8;
       color: white;
-    }
+    } */
 
     :root {
       --primary: #818cf8;
@@ -65,19 +52,9 @@
       --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* * { margin: 0; padding: 0; box-sizing: border-box; } */
 
     /* ⬇️ MAIN FIX: make body a column so navbar is on top, card below */
-    body {
-      font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 50%);
-      min-height: 100vh;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 16px 40px; /* bottom padding only */
-    }
 
     .card {
       width: 100%;
@@ -87,7 +64,7 @@
       border-radius: 20px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      margin-top: 80px; /* ⬅️ space under navbar */
+      margin-top: 1px; /* ⬅️ space under navbar */
     }
 
     .card-header {
@@ -191,63 +168,24 @@
     .helper-text a:hover {
       text-decoration: underline;
     }
-  </style>
-</head>
 
-<body>
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-left">
-      <button class="back-btn" onclick="history.back()">←</button>
-      <a href="/" style="all: unset;"> SRMIST Lost & Found</a>
-    </div>
-  </div>
+  .page-container {
+    flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px 16px 40px;
+}
 
-  <div class="card">
-    <div class="card-header">
-      <h1 class="card-title">Create Account</h1>
-      <p class="card-subtitle">Join SRMIST Lost &amp; Found</p>
-    </div>
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
 
-    <form id="signupForm">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input class="input" id="fullName" type="text" placeholder="John Doe">
-        <div class="error-text" id="nameError"></div>
-      </div>
+.register-layout{
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+}
 
-      <div class="form-group">
-        <label>SRMIST Email</label>
-        <input class="input" id="email" type="email" placeholder="your.name@srmist.edu.in">
-        <div class="error-text" id="emailError"></div>
-      </div>
-
-      <div class="form-group">
-        <label>Phone Number (Optional)</label>
-        <input class="input" id="phone" type="text" placeholder="+91 1234567890">
-        <div class="error-text" id="phoneError"></div>
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input class="input" id="password" type="password" placeholder="••••••••">
-        <div class="error-text" id="passwordError"></div>
-      </div>
-
-      <div class="form-group">
-        <label>Confirm Password</label>
-        <input class="input" id="confirmPassword" type="password" placeholder="••••••••">
-        <div class="error-text" id="confirmPasswordError"></div>
-      </div>
-
-      <button class="btn-submit" type="submit">Create Account</button>
-
-      <div class="success" id="successMessage"></div>
-
-      <p class="helper-text">
-        Already have an account? <a href="/login">Log In</a>
-      </p>
-    </form>
-  </div>
-</body>
-</html>

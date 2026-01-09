@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Browse - Lost & Found Items — SRMIST</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
+ :root {
       --primary: #818cf8;
       --primary-dark: #6366f1;
       --bg: #0f0f14;
@@ -39,11 +28,11 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* NAVBAR */
+    /* NAVBAR
     .navbar {
       display: flex;
+      justify-content: space-around;
       align-items: center;
-      justify-content: space-between;
       padding: 18px 7%;
       background: rgba(10, 10, 18, 0.96);
       border-bottom: 1px solid rgba(148, 163, 184, 0.15);
@@ -96,7 +85,7 @@
       background: var(--primary);
       box-shadow: 0 0 24px rgba(129, 140, 248, 0.8);
       transform: translateY(-1px);
-    }
+    } */
 
     /* PAGE LAYOUT */
     .page {
@@ -227,104 +216,29 @@
         padding-inline: 16px;
       }
     }
-  </style>
-</head>
-<body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <a href="/"><div class="nav-brand">SRMIST Lost &amp; Found</div></a>
-    <div class="nav-actions">
-      <button class="btn-nav login" id="loginBtn">Log In</button>
-      <button class="btn-nav signup" id="signupBtn">Sign Up</button>
-    </div>
-  </header>
+    .results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
 
-  <!-- PAGE CONTENT -->
-  <main class="page">
-    <!-- Header -->
-    <section class="page-header">
-      <h1 class="page-title">Browse Lost &amp; Found Items</h1>
-      <p class="page-subtitle">Search and filter through all active listings</p>
-    </section>
+/* Responsive fallbacks */
+@media (max-width: 1200px) {
+  .results-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+}
 
-    <!-- Filters -->
-    <section class="filter-card">
-      <div class="filter-grid">
-        <div class="filter-group">
-          <label for="searchInput">Search</label>
-          <input
-            id="searchInput"
-            class="filter-input"
-            type="text"
-            placeholder="Search items..."
-          />
-        </div>
+@media (max-width: 900px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-        <div class="filter-group">
-          <label for="typeSelect">Type</label>
-          <select id="typeSelect" class="filter-select">
-            <option value="all">All Types</option>
-            <option value="lost">Lost</option>
-            <option value="found">Found</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="categorySelect">Category</label>
-          <select id="categorySelect" class="filter-select">
-            <option value="all">All Categories</option>
-            <option value="electronics">Electronics</option>
-            <option value="documents">Documents</option>
-            <option value="clothing">Clothing</option>
-            <option value="accessories">Accessories</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-    <!-- Results / Empty State -->
-    <section class="results-card">
-      <p class="empty-text" id="emptyText">
-        No items found matching your criteria.
-      </p>
-    </section>
-  </main>
-
-  <!-- JS -->
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const typeSelect = document.getElementById('typeSelect');
-    const categorySelect = document.getElementById('categorySelect');
-    const emptyText = document.getElementById('emptyText');
-
-    function updateEmptyMessage() {
-      const term = searchInput.value.trim();
-      const type = typeSelect.value;
-      const category = categorySelect.value;
-
-      let msg = 'No items found matching your criteria.';
-
-      const parts = [];
-
-      if (term) parts.push(`search term <span>"${term}"</span>`);
-      if (type !== 'all') parts.push(`type <span>${type}</span>`);
-      if (category !== 'all') parts.push(`category <span>${category}</span>`);
-
-      if (parts.length) {
-        msg = `No items found for ${parts.join(' & ')}.`;
-      }
-
-      emptyText.innerHTML = msg;
-    }
-
-    searchInput.addEventListener('input', updateEmptyMessage);
-    typeSelect.addEventListener('change', updateEmptyMessage);
-    categorySelect.addEventListener('change', updateEmptyMessage);
-
-    document.getElementById('loginBtn').onclick = () => alert('Navigate to /login');
-    document.getElementById('signupBtn').onclick = () => alert('Navigate to /signup');
-  </script>
-</body>
-</html>
+@media (max-width: 500px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

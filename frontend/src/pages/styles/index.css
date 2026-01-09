@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>SRMIST Lost & Found — Dark Mode</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
+:root {
       --primary: #818cf8;
       --primary-glow: #a5b4fc;
       --primary-dark: #6366f1;
@@ -33,7 +22,7 @@
     }
 
     /* NAVBAR */
-    .navbar {
+    /* .navbar {
       width: 100%;
       padding: 18px 6%;
       display: flex;
@@ -59,9 +48,9 @@
       cursor: pointer;
       font-weight: 600;
       transition: 0.2s ease;
-    }
+    } */
 
-    .login-btn {
+    /* .login-btn {
       background: transparent;
       color: var(--primary);
       border: 1px solid var(--primary);
@@ -79,7 +68,7 @@
     .signup-btn:hover {
       background: var(--primary);
       box-shadow: 0 0 25px rgba(129, 140, 248, 0.6);
-    }
+    } */
 
     /* HERO SECTION */
     .hero {
@@ -186,71 +175,3 @@
     @media (max-width: 600px) {
       .features { grid-template-columns: 1fr; }
     }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-left">SRMIST Lost & Found</div>
-
-    <div class="nav-right">
-     <a href="/login"> <button class="login-btn" id="loginBtn">Log In</button></a>
-      <a href="/register"><button class="signup-btn" id="signupBtn">Sign Up</button></a>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1 class="hero-title">
-      Find What You Lost, <span class="accent">Return What You Found</span>
-    </h1>
-
-    <p class="hero-subtitle">
-      A secure platform exclusively for SRMIST students to report and reclaim lost items on campus.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="/register"><button class="btn-primary" id="getStartedBtn">Get Started</button></a>
-      <a href="/browse"><button class="btn-outline" id="browseBtn">Browse Items</button></a>
-    </div>
-  </section>
-
-  <!-- FEATURES SECTION -->
-  <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🛡️</div>
-      <div class="feature-title">Verified Access</div>
-      <div class="feature-text">Only SRMIST students can log in to ensure campus-exclusive access.</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📦</div>
-      <div class="feature-title">Easy Posting</div>
-      <div class="feature-text">Upload lost and found items quickly with simple forms and image uploads.</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <div class="feature-title">Smart Search</div>
-      <div class="feature-text">Search items by category, location, color, and date missing.</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <div class="feature-title">Private Messaging</div>
-      <div class="feature-text">Secure chat between item owners and finders for safe item returns.</div>
-    </div>
-  </section>
-
-  <!-- JS -->
-  <script>
-    // document.getElementById("getStartedBtn").onclick = () => alert("Go to Sign Up page");
-    // document.getElementById("browseBtn").onclick = () => alert("Go to Browse Items page");
-    // // document.getElementById("loginBtn").onclick = () => alert("Navigate to /login");
-    // document.getElementById("signupBtn").onclick = () => alert("Navigate to /signup");
-  </script>
-
-</body>
-</html>
