@@ -23,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
 
-app.
-
 
 //registration
 app.post('/api/register', async (req, res) => {
