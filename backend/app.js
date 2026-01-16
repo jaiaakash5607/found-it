@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser')
 const authMiddleware = require("./middleware/auth.js")
 const jwt = require("jsonwebtoken")
 const {readFileSync} = require("fs")
-// const Page = 
 
 
 const app = express();
